@@ -37,18 +37,30 @@ class HomePage extends StatelessWidget {
             onRefresh: () async {
               context.read<ProductsBloc>().add(RefreshProducts());
             },
-            child: GridView.builder(
-              padding: const EdgeInsets.all(16),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: _getCrossAxisCount(context),
-                childAspectRatio: 0.7,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-              ),
-              itemCount: state.products.length,
-              itemBuilder: (context, index) {
-                return ProductCard(product: state.products[index]);
-              },
+            child: CustomScrollView(
+              slivers: [
+                SliverPadding(
+                  padding: const EdgeInsets.all(16),
+                  sliver: SliverGrid(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: _getCrossAxisCount(context),
+                      childAspectRatio: 0.75,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        return AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                          child: ProductCard(product: state.products[index]),
+                        );
+                      },
+                      childCount: state.products.length,
+                    ),
+                  ),
+                ),
+              ],
             ),
           );
         }
