@@ -1,0 +1,38 @@
+{
+  "name": "Flutter Shopping Cart App",
+  "image": "mcr.microsoft.com/devcontainers/dart:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/android-command-line-tools:1": {},
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dart-code.dart-code",
+        "dart-code.flutter",
+        "ms-vscode.vscode-json"
+      ],
+      "settings": {
+        "dart.flutterSdkPath": "/usr/local/flutter",
+        "dart.sdkPath": "/usr/local/dart-sdk"
+      }
+    }
+  },
+  "postCreateCommand": "flutter doctor && flutter pub get",
+  "forwardPorts": [3000, 8080, 5000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Flutter Web",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "Flutter Web (Debug)",
+      "onAutoForward": "silent"
+    },
+    "5000": {
+      "label": "Flutter Web (Profile)",
+      "onAutoForward": "silent"
+    }
+  },
+  "remoteUser": "vscode"
+}

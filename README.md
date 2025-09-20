@@ -48,10 +48,22 @@ lib/
 
 ## Instalación
 
+### Opción 1: GitHub Codespaces (Recomendado para emulación)
+1. Ve a [https://github.com/MichellGiraldo/PruebaTecnicaFlutter](https://github.com/MichellGiraldo/PruebaTecnicaFlutter)
+2. Haz clic en el botón verde "Code"
+3. Selecciona "Codespaces"
+4. Crea un nuevo Codespace
+5. Una vez abierto, ejecuta:
+```bash
+flutter pub get
+flutter run -d web-server
+```
+
+### Opción 2: Instalación Local
 1. Clona el repositorio:
 ```bash
-git clone <url-del-repositorio>
-cd shopping-cart-app
+git clone https://github.com/MichellGiraldo/PruebaTecnicaFlutter.git
+cd PruebaTecnicaFlutter
 ```
 
 2. Instala las dependencias:
@@ -61,7 +73,14 @@ flutter pub get
 
 3. Ejecuta la aplicación:
 ```bash
+# Para Android
 flutter run
+
+# Para Web
+flutter run -d web-server
+
+# Para Chrome
+flutter run -d chrome
 ```
 
 ## Uso
